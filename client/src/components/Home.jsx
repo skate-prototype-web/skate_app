@@ -10,10 +10,9 @@ class Home extends Component {
   }
 render() {
     return (
-      <div> Hello from React
-      </div>
+      <div> Hello from React </div>
     );
   }
 }
 
-export default TourneyMainPage;
+export default Home;
