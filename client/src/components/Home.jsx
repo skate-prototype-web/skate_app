@@ -2,6 +2,27 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import styled from 'styled-components';
 import SkatePark from './parks/SkatePark.jsx';
+
+const StyledHomeTitle = styled.h1`
+  font-weight: 900; 
+`
+
+const StyledParksContainer = styled.div`
+  border: solid red; 
+  display: flex; 
+  flex-wrap: wrap;
+  flex-direction: row;
+  width: 80%; 
+  margin: auto;
+  justify-content: center; 
+  text-align: center; 
+`
+
+const StyledSingleParkContainer = styled.div`
+  border: solid blue;
+  width: 30%;
+`
+
 class Home extends Component {
   constructor () {
     super ()
@@ -23,14 +44,19 @@ render() {
   console.log (this.state)
     return (
       <>
-        <div> Zen Skate Co </div>
+        <StyledHomeTitle> Zen Skate Co </StyledHomeTitle>
         <div> Los Angeles Skate Parks </div>
+        <StyledParksContainer>
           {losAngelesSkateParks !== undefined && (
             losAngelesSkateParks.map((park, index) => {
               return (
-                <SkatePark website={park.website} phone={park.phone} key={index} name={park.location_name}/>
+                <StyledSingleParkContainer>
+                  <SkatePark website={park.website} phone={park.phone} key={index} name={park.location_name}/>
+                </StyledSingleParkContainer>
               )
           }))}
+
+        </StyledParksContainer>
       </>
     );
   }
