@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import axios from 'axios';
-import styled from 'styled-components';
-import AreaParks from './parks/AreaParks';
-import dummyData from '../../../server/dummyData.js'
+import React, {Component} from 'react'
+import axios from 'axios'
+import Header from './Header'
+import styled from 'styled-components'
+import AreaParks from './parks/AreaParks'
 
 const StyledHomeTitle = styled.h1`
   font-weight: 400;
@@ -33,26 +33,34 @@ class SkateParkList extends Component {
   }
 
   componentDidMount () {
-
-    console.log (dummyData, 'DATA')
     axios
-    .get(`https://data.lacity.org/resource/vwra-z6jg.json`)
-    .then (({data}) => {
-      this.setState({losAngelesSkateParks: data})
+    .get('http://localhost:9000/skateparks/api/getparks')
+    .then(({data}) => {
+      let regions = {}
+      const regionNames = {eastLA: 'East Los Angeles', metro: 'Metro Area', valley: 'The Valley', southLA: 'South Los Angeles', westLA: 'West Los Angeles', southBay: 'South Bay', undefined: 'Unassigned'}
+      data.map(park => {
+        if (!regions[park.region]) {
+          regions[park.region] = {name: regionNames[park.region], parks:[park]}
+        } else {
+          regions[park.region].parks.push(park)
+        }
       })
+      this.setState(regions)
+    })
     .catch (error => console.log('error', error))
   }
 
-render() {
-  const { losAngelesSkateParks } = this.state
-  console.log (this.state)
+render() { 
+  let regionMap = []
+  Object.keys(this.state).map(region => regionMap.push(region))
     return (
       <>
+        <Header/>
         <StyledHomeTitle>Los Angeles Area Parks</StyledHomeTitle> 
         <StyledParksContainer>
-          {dummyData.map((region, index) => {
+          {regionMap.map((region, index) => {
               return (
-                <AreaParks region={region.region} parks={region.parks} key={index}/>
+                <AreaParks region={this.state[region].name} parks={this.state[region].parks} key={index}/>
               )
           })}
         </StyledParksContainer>

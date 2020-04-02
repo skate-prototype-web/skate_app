@@ -1,5 +1,5 @@
 const dummyData = [
-   { region: 'East Los Angeles',
+  { region: 'East Los Angeles',
     parks: [ {
       name: 'El Sereno Skate Park',
       images: ['https://skateparks.s3-us-west-2.amazonaws.com/region-eastla/ElSereno/el-sereno-skate-park-1.jpg',

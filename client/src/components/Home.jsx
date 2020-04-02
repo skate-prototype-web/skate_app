@@ -2,8 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import styled, { keyframes } from 'styled-components'
 import ensoPlainWhite from '../images/enso_plain_white.png'
-
-import dummyData from '../../../server/dummyData.js'
+import Header from './Header'
 
 const rotate = keyframes `
   from {
@@ -77,19 +76,12 @@ class Home extends Component {
   }
 
   componentDidMount () {
-
-    console.log (dummyData, 'DATA')
-    axios
-    .get(`https://data.lacity.org/resource/vwra-z6jg.json`)
-    .then (({data}) => {
-      this.setState({losAngelesSkateParks: data})
-      })
-    .catch (error => console.log('error', error))
   }
 
 render() {
     return (
       <>
+        <Header/>
         <StyledImageContainer>
           <StyledTextContainerLeft>
             <StyledText>Letting the Mind Go</StyledText>

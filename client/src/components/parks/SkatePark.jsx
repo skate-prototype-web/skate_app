@@ -13,7 +13,6 @@ const StyledImageContainer = styled.div`
   background-size: cover; 
 `
 
-
 const StyledParkContainer = styled.div`
   border-radius: 3px;
   background: rgba(179,0,0,.9);
