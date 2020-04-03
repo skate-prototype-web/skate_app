@@ -1,0 +1,38 @@
+version: "3"
+services:
+    client:
+        build: ./zen_skate_co/client
+        ports:
+            - "3283:3283"
+        restart: always
+        links:
+            - api
+        networks:
+            - webappnetwork
+    server:
+
+        image: webapp-api
+        restart: always
+        ports:
+            - "9000:9000"
+        volumes:
+            - ./api:/api
+            - /api/node_modules
+        depends_on:
+            - mongodb
+        networks:
+            - webappnetwork
+    mongodb:
+        image: mongo
+        restart: always
+        container_name: mongodb
+        volumes:
+            - ./data-node:/data/db
+        ports:
+            - "27017:27017"
+        command: mongod --noauth --smallfiles
+        networks:
+            - skateappnetwork
+networks:
+    webappnetwork:
+        driver: skateappnetwork

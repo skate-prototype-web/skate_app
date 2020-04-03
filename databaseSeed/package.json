@@ -1,0 +1,16 @@
+{
+  "name": "databaseseed",
+  "version": "1.0.0",
+  "description": "seeding",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "seed": "node ./seed/seed.js"
+  },
+  "author": "Scott Nassau",
+  "license": "MIT",
+  "dependencies": {
+    "mongoose": "^5.9.7"
+  },
+  "devDependencies": {}
+}
