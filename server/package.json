@@ -6,7 +6,7 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon server/index.js",
-    "prod": "server/index.js",
+    "prod": "node server/index.js",
     "seed": "node ./database/seed/seed.js"
   },
   "author": "Scott Nassau",

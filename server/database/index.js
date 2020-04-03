@@ -1,8 +1,10 @@
-const mongoose = require ('mongoose');
-mongoose.connect('mongodb://localhost:27017/zenskate', {
+const mongoose = require ('mongoose')
+
+mongoose.connect('mongodb://localhost:50252/zenskate', {
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
+  .catch(error => console.log(`this is the error when connecting to database in database/index ${error}`));
 
 const db = mongoose.connection; 
 
