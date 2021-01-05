@@ -20,7 +20,7 @@
   "homepage": "https://github.com/ShlomoLove/server_structure#readme",
   "dependencies": {
     "@reach/router": "^1.3.3",
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "express": "^4.17.1",
     "mongoose": "^5.9.6",
     "react": "^16.13.0",
